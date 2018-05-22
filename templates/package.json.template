@@ -7,8 +7,8 @@
  {
   "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"
  },
- "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards___DATE__.zip",
- "archiveFileName": "custom_boards___DATE__.zip",
+ "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/__ARCHIVE__.zip",
+ "archiveFileName": "__ARCHIVE__.zip",
  "checksum": "SHA-256:__SHA256__",
  "size": "__SIZE__",
  "boards":

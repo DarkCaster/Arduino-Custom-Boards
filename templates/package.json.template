@@ -1,0 +1,31 @@
+{
+ "name": "Custom AVR board-definitions",
+ "architecture": "avr",
+ "version": "__DATE__",
+ "category": "Contributed",
+ "help":
+ {
+  "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"
+ },
+ "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards___DATE__.zip",
+ "archiveFileName": "custom_boards___DATE__.zip",
+ "checksum": "SHA-256:__SHA256__",
+ "size": "__SIZE__",
+ "boards":
+ [
+  {"name": "ATmega328"},
+ ],
+ "toolsDependencies":
+ [
+  {
+   "packager": "arduino",
+   "name": "avrdude",
+   "version": "6.3.0-arduino9"
+  },
+  {
+   "packager": "arduino",
+   "name": "avr-gcc",
+   "version": "4.9.2-atmel3.5.4-arduino2"
+  },
+ ]
+}

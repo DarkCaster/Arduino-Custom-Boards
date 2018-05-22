@@ -1,0 +1,13 @@
+{
+ "packages":
+ [
+  {
+   "name": "custom_boards",
+   "maintainer": "DarkCaster",
+   "websiteURL": "https://github.com/DarkCaster/Arduino-Custom-Boards",
+   "help":
+   {
+    "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"
+   },
+   "platforms":
+   [

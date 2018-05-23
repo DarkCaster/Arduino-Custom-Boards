@@ -5,6 +5,7 @@
    "name": "custom_boards",
    "maintainer": "DarkCaster",
    "websiteURL": "https://github.com/DarkCaster/Arduino-Custom-Boards",
+   "email": "",
    "help":
    {
     "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"

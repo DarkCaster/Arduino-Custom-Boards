@@ -23,8 +23,8 @@
  },
  "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards_2018.5.23.zip",
  "archiveFileName": "custom_boards_2018.5.23.zip",
- "checksum": "SHA-256:f41c06bb46122f483f7ee695619d6e05b1542362da6f19844f5484057a5bb61f",
- "size": "3369",
+ "checksum": "SHA-256:68bf4620042931fea846db0250769a578f3e1846a6626c3899d516d5e9c35c41",
+ "size": "3396",
  "boards":
  [
   {"name": "ATmega328"}

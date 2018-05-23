@@ -4,7 +4,7 @@ menu.version = MCU
 menu.clock = Clock
 menu.locking = Locking
 menu.boot = Bootloader
-menu.defines = Board
+menu.defines = Board variant
 
 ### ATmega328P
 ##############################################################
@@ -21,13 +21,12 @@ a328.bootloader.lock_bits=0x3F
 ### Other definitions
 a328.build.mcu=atmega328p
 a328.build.f_cpu=16000000L
-a328.build.core=arduino
-a328.build.variant=standard
+a328.build.core=arduino:arduino
+a328.build.variant=arduino:standard
 a328.build.board=AVR_CUSTOM_BOARD
-a328.upload.tool=avrdude
-a328.upload.protocol=arduino
+a328.upload.tool=arduino:avrdude
 a328.upload.speed=115200
-a328.bootloader.tool=avrdude
+a328.bootloader.tool=arduino:avrdude
 
 ### MCU menu
 a328.menu.version.atmega328p = Atmega328P
@@ -79,47 +78,46 @@ a328.menu.locking.lpmspm_bap.bootloader.lock_bits=02
 a328.menu.boot.none=No bootloader (for ISP programming)
 a328.menu.boot.none.upload.maximum_size=32768
 a328.menu.boot.none.bootloader.high_fuses=0xDF
-a328.menu.boot.none.upload.tool=avrdude
-a328.menu.boot.none.upload.protocol=arduino
+a328.menu.boot.none.upload.tool=arduino:avrdude
 a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
 ### Arduino defines
 a328.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=standard
 a328.menu.defines.custom_board.build.board=AVR_CUSTOM_BOARD
-a328.menu.defines.custom_board.build.variant=standard
+a328.menu.defines.custom_board.build.variant=arduino:standard
 
 a328.menu.defines.uno=AVR_UNO; variant=standard
 a328.menu.defines.uno.build.board=AVR_UNO
-a328.menu.defines.uno.build.variant=standard
+a328.menu.defines.uno.build.variant=arduino:standard
 
 a328.menu.defines.diecimila=AVR_DUEMILANOVE; variant=standard
 a328.menu.defines.diecimila.build.board=AVR_DUEMILANOVE
-a328.menu.defines.diecimila.build.variant=standard
+a328.menu.defines.diecimila.build.variant=arduino:standard
 
 a328.menu.defines.nano=AVR_NANO; variant=eightanaloginputs
 a328.menu.defines.nano.build.board=AVR_NANO
-a328.menu.defines.nano.build.variant=eightanaloginputs
+a328.menu.defines.nano.build.variant=arduino:eightanaloginputs
 
 a328.menu.defines.mini=AVR_MINI; variant=eightanaloginputs
 a328.menu.defines.mini.build.board=AVR_MINI
-a328.menu.defines.mini.build.variant=eightanaloginputs
+a328.menu.defines.mini.build.variant=arduino:eightanaloginputs
 
 a328.menu.defines.ethernet=AVR_ETHERNET; variant=ethernet
 a328.menu.defines.ethernet.build.board=AVR_ETHERNET
-a328.menu.defines.ethernet.build.variant=ethernet
+a328.menu.defines.ethernet.build.variant=arduino:ethernet
 
 a328.menu.defines.fio=AVR_FIO; variant=eightanaloginputs
 a328.menu.defines.fio.build.board=AVR_FIO
-a328.menu.defines.fio.build.variant=eightanaloginputs
+a328.menu.defines.fio.build.variant=arduino:eightanaloginputs
 
 a328.menu.defines.bt=AVR_BT; variant=eightanaloginputs
 a328.menu.defines.bt.build.board=AVR_BT
-a328.menu.defines.bt.build.variant=eightanaloginputs
+a328.menu.defines.bt.build.variant=arduino:eightanaloginputs
 
 a328.menu.defines.lili=AVR_LILYPAD; variant=standard
 a328.menu.defines.lili.build.board=AVR_LILYPAD
-a328.menu.defines.lili.build.variant=standard
+a328.menu.defines.lili.build.variant=arduino:standard
 
 a328.menu.defines.pro=AVR_PRO; variant=eightanaloginputs
 a328.menu.defines.pro.build.board=AVR_PRO
-a328.menu.defines.pro.build.variant=eightanaloginputs
+a328.menu.defines.pro.build.variant=arduino:eightanaloginputs

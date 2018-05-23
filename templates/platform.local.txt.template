@@ -4,27 +4,36 @@ tools.avrdude_fuseonly.path={runtime.tools.avrdude.path}
 tools.avrdude_fuseonly.cmd.path={path}/bin/avrdude
 tools.avrdude_fuseonly.config.path={path}/etc/avrdude.conf
 
+### for use with regular sketch-upload command when using "No bootloader" mode
+### upload sketch via selected programmer with full chip-erase, and set-up lock_bits
+
 tools.avrdude_fuseonly.upload.params.verbose=-v
 tools.avrdude_fuseonly.upload.params.quiet=-q -q
 # tools.avrdude_fuseonly.upload.verify is needed for backwards compatibility with IDE 1.6.8 or older, IDE 1.6.9 or newer overrides this value
 tools.avrdude_fuseonly.upload.verify=
 tools.avrdude_fuseonly.upload.params.noverify=-V
-tools.avrdude_fuseonly.upload.pattern="{cmd.path}" "-C{config.path}" {upload.verbose} {upload.verify} -p{build.mcu} -c{upload.protocol} "-P{serial.port}" -b{upload.speed} -D "-Uflash:w:{build.path}/{build.project_name}.hex:i"
+tools.avrdude_fuseonly.upload.pattern="{cmd.path}" "-C{config.path}" {upload.verbose} {upload.verify} -p{build.mcu} -c{upload.protocol} "-P{serial.port}" -b{upload.speed} -e "-Uflash:w:{build.path}/{build.project_name}.hex:i" -Ulock:w:{bootloader.lock_bits}:m
+
+### for use with "upload using a programmer" command
+### upload sketch via selected programmer with full chip-erase, and set-up lock_bits
 
 tools.avrdude_fuseonly.program.params.verbose=-v
 tools.avrdude_fuseonly.program.params.quiet=-q -q
 # tools.avrdude_fuseonly.program.verify is needed for backwards compatibility with IDE 1.6.8 or older, IDE 1.6.9 or newer overrides this value
 tools.avrdude_fuseonly.program.verify=
 tools.avrdude_fuseonly.program.params.noverify=-V
-tools.avrdude_fuseonly.program.pattern="{cmd.path}" "-C{config.path}" {program.verbose} {program.verify} -p{build.mcu} -c{protocol} {program.extra_params} "-Uflash:w:{build.path}/{build.project_name}.hex:i"
+tools.avrdude_fuseonly.program.pattern="{cmd.path}" "-C{config.path}" {program.verbose} {program.verify} -p{build.mcu} -c{protocol} {program.extra_params} -e "-Uflash:w:{build.path}/{build.project_name}.hex:i" -Ulock:w:{bootloader.lock_bits}:m
+
+### for use with "burn bootloader" command
+### perform chip-erase, set-up fuses, set lock_bits to unlocked state
 
 tools.avrdude_fuseonly.erase.params.verbose=-v
 tools.avrdude_fuseonly.erase.params.quiet=-q -q
-tools.avrdude_fuseonly.erase.pattern="{cmd.path}" "-C{config.path}" {erase.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -e -Ulock:w:{bootloader.unlock_bits}:m -Uefuse:w:{bootloader.extended_fuses}:m -Uhfuse:w:{bootloader.high_fuses}:m -Ulfuse:w:{bootloader.low_fuses}:m
+tools.avrdude_fuseonly.erase.pattern="{cmd.path}" "-C{config.path}" {erase.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -e -Uefuse:w:{bootloader.extended_fuses}:m -Uhfuse:w:{bootloader.high_fuses}:m -Ulfuse:w:{bootloader.low_fuses}:m
 
 tools.avrdude_fuseonly.bootloader.params.verbose=-v
 tools.avrdude_fuseonly.bootloader.params.quiet=-q -q
-tools.avrdude_fuseonly.bootloader.pattern="{cmd.path}" "-C{config.path}" {bootloader.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -Ulock:w:{bootloader.lock_bits}:m
+tools.avrdude_fuseonly.bootloader.pattern="{cmd.path}" "-C{config.path}" {bootloader.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -Ulock:w:{bootloader.unlock_bits}:m
 
 tools.avrdude_fuseonly.network_cmd={runtime.tools.arduinoOTA.path}/bin/arduinoOTA
 tools.avrdude_fuseonly.upload.network_pattern="{network_cmd}" -address {serial.port} -port {upload.network.port} -sketch "{build.path}/{build.project_name}.hex" -upload {upload.network.endpoint_upload} -sync {upload.network.endpoint_sync} -reset {upload.network.endpoint_reset} -sync_exp {upload.network.sync_return}

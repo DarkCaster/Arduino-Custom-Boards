@@ -23,8 +23,13 @@ if [[ ! -z $MSYSTEM ]]; then
  log "running on msys"
  compress ()
  {
-  log "TODO"
-  return 1
+  local base="$1"
+  local source="$2"
+  local target="$3"
+  1>/dev/null pushd "$base"
+  "$curdir/gnuwin32_zip_util/zip.exe" -q -9 -r -X "$target" "$source"
+  1>/dev/null popd
+  return 0
  }
 else
  compress ()
@@ -47,16 +52,15 @@ cp "$curdir/templates/boards.txt.template" "$temp_dir/$package_name/boards.txt"
 cp "$curdir/templates/platform.local.txt.template" "$temp_dir/$package_name/platform.local.txt"
 
 #compress files
-compress "$temp_dir/$package_name" "$temp_dir/$package_archive"
+log "creating archive $package_archive"
+compress "$temp_dir" "$package_name" "$package_archive"
 
-### TODO: calculate sha256 checksum
-checksum=""
-
-### TODO: calculate package size
-size=""
+#calculate sha256 checksum and size
+checksum=`sha256sum.exe -b "$temp_dir/$package_archive" | cut -f1 -d" "`
+size=`du -b "$temp_dir/$package_archive" | cut -f1`
 
 #create package.json based on package.json.template
-cp "$curdir/package.json.template" "$temp_dir/${package_name}.json"
+cp "$curdir/templates/package.json.template" "$temp_dir/${package_name}.json"
 sed -i "s|__DATE__|$package_date|g" "$temp_dir/${package_name}.json"
 sed -i "s|__ARCHIVE__|$package_archive|g" "$temp_dir/${package_name}.json"
 sed -i "s|__SHA256__|$checksum|g" "$temp_dir/${package_name}.json"
@@ -66,7 +70,14 @@ sed -i "s|__SIZE__|$size|g" "$temp_dir/${package_name}.json"
 mv "$temp_dir/$package_archive" "$curdir/packages/$package_archive"
 mv "$temp_dir/${package_name}.json" "$curdir/packages/${package_name}.json"
 
-### TODO: re-create board-manager definition file at $curdir/custom-packages.json
+#re-create board-manager definition file at $curdir/custom-packages.json
+cat "$curdir/templates/header.json.template" > "$curdir/custom-packages.json"
+for entry in "$curdir/packages/"*.json
+do
+ [[ ! -f "$entry" ]] && break;
+ echo "," | cat "$entry" - >> "$curdir/custom-packages.json"
+done
+cat "$curdir/templates/footer.json.template" >> "$curdir/custom-packages.json"
 
 #remove $temp_dir
 log "cleaning up temporary directory at $temp_dir"

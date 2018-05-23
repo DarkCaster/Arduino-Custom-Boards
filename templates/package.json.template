@@ -13,7 +13,7 @@
  "size": "__SIZE__",
  "boards":
  [
-  {"name": "ATmega328"},
+  {"name": "ATmega328"}
  ],
  "toolsDependencies":
  [
@@ -26,6 +26,6 @@
    "packager": "arduino",
    "name": "avr-gcc",
    "version": "4.9.2-atmel3.5.4-arduino2"
-  },
+  }
  ]
 }

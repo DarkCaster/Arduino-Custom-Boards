@@ -14,7 +14,7 @@ a328.name=Custom ATmega328/P/PB based board
 ### Base fuses and lock_bits
 a328.bootloader.low_fuses=0xE2
 a328.bootloader.high_fuses=0xDF
-a328.bootloader.extended_fuses=0x05
+a328.bootloader.extended_fuses=0xFD
 a328.bootloader.unlock_bits=0x3F
 a328.bootloader.lock_bits=0x3F
 
@@ -63,16 +63,16 @@ a328.menu.clock.I8MHz.upload.speed=38400
 
 ### Locking menu
 a328.menu.locking.nolock=Unlocked
-a328.menu.locking.nolock.bootloader.lock_bits=3F
+a328.menu.locking.nolock.bootloader.lock_bits=0x3F
 
 a328.menu.locking.lpmspm_b=Disable LPM/SPM in boot section only
-a328.menu.locking.lpmspm_b.bootloader.lock_bits=0F
+a328.menu.locking.lpmspm_b.bootloader.lock_bits=0x0F
 
 a328.menu.locking.lpmspm_ba=Disable LPM/SPM in boot and app sections
-a328.menu.locking.lpmspm_ba.bootloader.lock_bits=03
+a328.menu.locking.lpmspm_ba.bootloader.lock_bits=0x03
 
 a328.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable further programming
-a328.menu.locking.lpmspm_bap.bootloader.lock_bits=02
+a328.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
 
 ### Bootloader Menu
 a328.menu.boot.none=No bootloader (for ISP programming)

@@ -25,8 +25,9 @@ a328.build.core=arduino:arduino
 a328.build.variant=arduino:standard
 a328.build.board=AVR_CUSTOM_BOARD
 a328.upload.tool=arduino:avrdude
-a328.upload.speed=115200
+a328.upload.speed=57600
 a328.bootloader.tool=arduino:avrdude
+a328.upload.tool=arduino:avrdude
 
 ### MCU menu
 a328.menu.version.atmega328p = Atmega328P
@@ -75,10 +76,12 @@ a328.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable further
 a328.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
 
 ### Bootloader Menu
-a328.menu.boot.none=No bootloader (for ISP programming)
+a328.menu.boot.none=No bootloader (sketch upload use AVR ISP)
 a328.menu.boot.none.upload.maximum_size=32768
 a328.menu.boot.none.bootloader.high_fuses=0xDF
-a328.menu.boot.none.upload.tool=arduino:avrdude
+a328.menu.boot.none.upload.tool=avrdude_fuseonly
+a328.menu.boot.none.upload.protocol=stk500v1
+a328.menu.boot.none.upload.speed=115200
 a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
 ### Arduino defines

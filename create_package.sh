@@ -1,7 +1,5 @@
 #!/bin/bash
 
-arduino_branch="master"
-
 curdir="$( cd "$( dirname "$0" )" && pwd )"
 
 log () {
@@ -43,6 +41,7 @@ mkdir -p "$curdir/packages"
 package_date=`date +%Y.%m.%d`
 package_name="custom_boards_${package_date}"
 package_archive="custom_boards_${package_date}.zip"
+index="package_custom_boards_index.json"
 temp_dir=`mktemp -d`
 log "using temp_directory: $temp_dir"
 
@@ -70,16 +69,16 @@ sed -i "s|__SIZE__|$size|g" "$temp_dir/${package_name}.json"
 mv "$temp_dir/$package_archive" "$curdir/packages/$package_archive"
 mv "$temp_dir/${package_name}.json" "$curdir/packages/${package_name}.json"
 
-#re-create board-manager definition file at $curdir/custom-packages.json
+#re-create board-manager definition file at $curdir/$index
 first_line="true"
-cat "$curdir/templates/header.json.template" > "$curdir/custom-packages.json"
+cat "$curdir/templates/header.json.template" > "$curdir/$index"
 for entry in "$curdir/packages/"*.json
 do
  [[ ! -f "$entry" ]] && break;
- [[ $first_line == true ]] && first_line="false" || echo "," >> "$curdir/custom-packages.json"
- cat "$entry" >> "$curdir/custom-packages.json"
+ [[ $first_line == true ]] && first_line="false" || echo "," >> "$curdir/$index"
+ cat "$entry" >> "$curdir/$index"
 done
-cat "$curdir/templates/footer.json.template" >> "$curdir/custom-packages.json"
+cat "$curdir/templates/footer.json.template" >> "$curdir/$index"
 
 #remove $temp_dir
 log "cleaning up temporary directory at $temp_dir"

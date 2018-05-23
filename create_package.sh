@@ -45,10 +45,14 @@ index="package_custom_boards_index.json"
 temp_dir=`mktemp -d`
 log "using temp_directory: $temp_dir"
 
-#copy board-definition-templates to $temp_dir
+#create board-definition files at $temp_dir/$package_name
 mkdir -p "$temp_dir/$package_name"
-cp "$curdir/templates/boards.txt.template" "$temp_dir/$package_name/boards.txt"
-cp "$curdir/templates/platform.local.txt.template" "$temp_dir/$package_name/platform.local.txt"
+dos2unix -q -r -n "$curdir/src/boards.txt" "$temp_dir/$package_name/boards.txt"
+dos2unix -q -r -n "$curdir/src/platform.local.txt" "$temp_dir/$package_name/platform.local.txt"
+log "downloading programmers.txt from ArduinoCore-avr github repo"
+curl -s -o "$temp_dir/$package_name/programmers.txt" "https://raw.githubusercontent.com/arduino/ArduinoCore-avr/master/programmers.txt"
+dos2unix -q -r "$temp_dir/$package_name/programmers.txt"
+sed -i "s|program.tool=avrdude|program.tool=avrdude_fuseonly|g" "$temp_dir/$package_name/programmers.txt"
 
 #compress files
 log "creating archive $package_archive"
@@ -59,7 +63,7 @@ checksum=`sha256sum.exe -b "$temp_dir/$package_archive" | cut -f1 -d" "`
 size=`du -b "$temp_dir/$package_archive" | cut -f1`
 
 #create package.json based on package.json.template
-cp "$curdir/templates/package.json.template" "$temp_dir/${package_name}.json"
+dos2unix -q -r -n "$curdir/templates/package.json.template" "$temp_dir/${package_name}.json"
 sed -i "s|__DATE__|$package_date|g" "$temp_dir/${package_name}.json"
 sed -i "s|__ARCHIVE__|$package_archive|g" "$temp_dir/${package_name}.json"
 sed -i "s|__SHA256__|$checksum|g" "$temp_dir/${package_name}.json"
@@ -79,6 +83,7 @@ do
  cat "$entry" >> "$curdir/$index"
 done
 cat "$curdir/templates/footer.json.template" >> "$curdir/$index"
+dos2unix -q -r "$curdir/$index"
 
 #remove $temp_dir
 log "cleaning up temporary directory at $temp_dir"

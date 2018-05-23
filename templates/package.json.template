@@ -13,7 +13,8 @@
  "size": "__SIZE__",
  "boards":
  [
-  {"name": "ATmega328"}
+  {"name": "ATmega328"},
+  {"name": "ATmega1284"}
  ],
  "toolsDependencies":
  [

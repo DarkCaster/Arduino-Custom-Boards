@@ -38,7 +38,7 @@ else
 fi
 
 mkdir -p "$curdir/packages"
-package_date=`date +%Y.%m.%d`
+package_date=`date +%Y.%-m.%-d`
 package_name="custom_boards_${package_date}"
 package_archive="custom_boards_${package_date}.zip"
 index="package_custom_boards_index.json"

@@ -124,3 +124,71 @@ a328.menu.defines.lili.build.variant=arduino:standard
 a328.menu.defines.pro=AVR_PRO; variant=eightanaloginputs
 a328.menu.defines.pro.build.board=AVR_PRO
 a328.menu.defines.pro.build.variant=arduino:eightanaloginputs
+
+### ATmega1284p
+##############################################################
+
+a1284.name=Custom ATmega1284P based board
+
+### Base fuses and lock_bits
+a1284.bootloader.low_fuses=0xFF
+a1284.bootloader.high_fuses=0xDF
+a1284.bootloader.extended_fuses=0xFD
+a1284.bootloader.unlock_bits=0x3F
+a1284.bootloader.lock_bits=0x3F
+
+### Other definitions
+a1284.build.mcu=atmega1284p
+a1284.build.f_cpu=16000000L
+a1284.build.core=arduino:arduino
+a1284.build.variant=sanguino
+a1284.build.board=AVR_CUSTOM_BOARD
+a1284.upload.tool=arduino:avrdude
+a1284.upload.speed=57600
+a1284.bootloader.tool=arduino:avrdude
+a1284.upload.tool=arduino:avrdude
+a1284.upload.maximum_data_size=16384
+
+### MCU menu
+a1284.menu.version.atmega1284p = Atmega1284P
+a1284.menu.version.atmega1284p.build.mcu = atmega1284p
+
+### Clock Menu
+a1284.menu.clock.8MHz=8MHz External
+a1284.menu.clock.8MHz.build.f_cpu=8000000L
+a1284.menu.clock.8MHz.bootloader.low_fuses=0xFF
+
+a1284.menu.clock.16MHz=16MHz External
+a1284.menu.clock.16MHz.build.f_cpu=16000000L
+a1284.menu.clock.16MHz.bootloader.low_fuses=0xFF
+
+### Locking menu
+a1284.menu.locking.nolock=Unlocked
+a1284.menu.locking.nolock.bootloader.lock_bits=0x3F
+
+a1284.menu.locking.lpmspm_b=Disable LPM/SPM in boot section only
+a1284.menu.locking.lpmspm_b.bootloader.lock_bits=0x0F
+
+a1284.menu.locking.lpmspm_ba=Disable LPM/SPM in boot and app sections
+a1284.menu.locking.lpmspm_ba.bootloader.lock_bits=0x03
+
+a1284.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable further programming
+a1284.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
+
+### Bootloader Menu
+a1284.menu.boot.none=No bootloader (sketch upload use AVR ISP)
+a1284.menu.boot.none.upload.maximum_size=131072
+a1284.menu.boot.none.bootloader.high_fuses=0xDF
+a1284.menu.boot.none.upload.tool=avrdude_fuseonly
+a1284.menu.boot.none.upload.protocol=stk500v1
+a1284.menu.boot.none.upload.speed=115200
+a1284.menu.boot.none.bootloader.tool=avrdude_fuseonly
+
+### Arduino defines
+a1284.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=sanguino
+a1284.menu.defines.custom_board.build.board=AVR_CUSTOM_BOARD
+a1284.menu.defines.custom_board.build.variant=sanguino
+
+a1284.menu.defines.sanguino=AVR_SANGUINO; variant=sanguino
+a1284.menu.defines.sanguino.build.board=AVR_SANGUINO
+a1284.menu.defines.sanguino.build.variant=sanguino

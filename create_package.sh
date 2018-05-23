@@ -53,6 +53,7 @@ log "downloading programmers.txt from ArduinoCore-avr github repo"
 curl -s -o "$temp_dir/$package_name/programmers.txt" "https://raw.githubusercontent.com/arduino/ArduinoCore-avr/master/programmers.txt"
 dos2unix -q -r "$temp_dir/$package_name/programmers.txt"
 sed -i "s|program.tool=avrdude|program.tool=avrdude_fuseonly|g" "$temp_dir/$package_name/programmers.txt"
+sed -i "s|(\.name=.*)(\$)|\1 (with lock setup)\2|g" "$temp_dir/$package_name/programmers.txt"
 
 #compress files
 log "creating archive $package_archive"

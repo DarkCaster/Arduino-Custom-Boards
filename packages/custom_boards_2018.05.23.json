@@ -9,11 +9,11 @@
  },
  "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards_2018.05.23.zip",
  "archiveFileName": "custom_boards_2018.05.23.zip",
- "checksum": "SHA-256:8444db9fd7afa4d860649efe80a85602aa2d57715227c10f2eb7afcd52512e7d",
+ "checksum": "SHA-256:1a8680e1fa1f4a465ec779f02c8d58b144c47d6d29e6e98ce9119aa5459271a5",
  "size": "1975",
  "boards":
  [
-  {"name": "ATmega328"},
+  {"name": "ATmega328"}
  ],
  "toolsDependencies":
  [
@@ -26,6 +26,6 @@
    "packager": "arduino",
    "name": "avr-gcc",
    "version": "4.9.2-atmel3.5.4-arduino2"
-  },
+  }
  ]
 }

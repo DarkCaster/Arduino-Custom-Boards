@@ -71,11 +71,13 @@ mv "$temp_dir/$package_archive" "$curdir/packages/$package_archive"
 mv "$temp_dir/${package_name}.json" "$curdir/packages/${package_name}.json"
 
 #re-create board-manager definition file at $curdir/custom-packages.json
+first_line="true"
 cat "$curdir/templates/header.json.template" > "$curdir/custom-packages.json"
 for entry in "$curdir/packages/"*.json
 do
  [[ ! -f "$entry" ]] && break;
- echo "," | cat "$entry" - >> "$curdir/custom-packages.json"
+ [[ $first_line == true ]] && first_line="false" || echo "," >> "$curdir/custom-packages.json"
+ cat "$entry" >> "$curdir/custom-packages.json"
 done
 cat "$curdir/templates/footer.json.template" >> "$curdir/custom-packages.json"
 

@@ -154,6 +154,10 @@ a1284.menu.version.atmega1284p = Atmega1284P
 a1284.menu.version.atmega1284p.build.mcu = atmega1284p
 
 ### Clock Menu
+a1284.menu.clock.anet=16MHz FullSwing Oscillator (Anet 1.0 Board, CKSEL=0110, SUT=01)
+a1284.menu.clock.anet.build.f_cpu=16000000L
+a1284.menu.clock.anet.bootloader.low_fuses=0xD6
+
 a1284.menu.clock.8MHz=8MHz External
 a1284.menu.clock.8MHz.build.f_cpu=8000000L
 a1284.menu.clock.8MHz.bootloader.low_fuses=0xFF

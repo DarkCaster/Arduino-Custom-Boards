@@ -15,37 +15,6 @@
 {
  "name": "Custom AVR board-definitions",
  "architecture": "avr",
- "version": "2018.5.23.2.19",
- "category": "Contributed",
- "help":
- {
-  "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"
- },
- "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards_2018.5.23.2.19.zip",
- "archiveFileName": "custom_boards_2018.5.23.2.19.zip",
- "checksum": "SHA-256:e5407a619a9c18f41663c001a5e143b20b6cfac2f1320ea9e6c598efddaae73b",
- "size": "2004",
- "boards":
- [
-  {"name": "ATmega328"}
- ],
- "toolsDependencies":
- [
-  {
-   "packager": "arduino",
-   "name": "avrdude",
-   "version": "6.3.0-arduino9"
-  },
-  {
-   "packager": "arduino",
-   "name": "avr-gcc",
-   "version": "4.9.2-atmel3.5.4-arduino2"
-  }
- ]
-},
-{
- "name": "Custom AVR board-definitions",
- "architecture": "avr",
  "version": "2018.5.23",
  "category": "Contributed",
  "help":
@@ -54,8 +23,8 @@
  },
  "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards_2018.5.23.zip",
  "archiveFileName": "custom_boards_2018.5.23.zip",
- "checksum": "SHA-256:f9d1019fc5f1a0b38d7c04321000950c7272d6531521e3d0ff9e2e50a36478fc",
- "size": "1969",
+ "checksum": "SHA-256:f667e368e53509c2b78a4a127722f64eed5bd84c5e62730016e16938a2b92373",
+ "size": "1974",
  "boards":
  [
   {"name": "ATmega328"}

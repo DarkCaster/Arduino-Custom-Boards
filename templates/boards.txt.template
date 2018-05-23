@@ -81,7 +81,7 @@ a328.menu.boot.none.upload.maximum_size=32768
 a328.menu.boot.none.bootloader.high_fuses=0xDF
 a328.menu.boot.none.upload.tool=avrdude
 a328.menu.boot.none.upload.protocol=arduino
-a328.menu.boot.none.bootloader.tool=avrdude_nobootloader
+a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
 ### Arduino defines
 a328.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=standard

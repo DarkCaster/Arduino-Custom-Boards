@@ -1,5 +1,7 @@
 #!/bin/bash
 
+arduino_branch="master"
+
 curdir="$( cd "$( dirname "$0" )" && pwd )"
 
 log () {
@@ -34,18 +36,39 @@ fi
 
 mkdir -p "$curdir/packages"
 package_date=`date +%Y.%m.%d`
-package_name="custom_boards_$package_date"
+package_name="custom_boards_${package_date}"
+package_archive="custom_boards_${package_date}.zip"
 temp_dir=`mktemp -d`
 log "using temp_directory: $temp_dir"
 
-### TODO: copy board-definition-templates to $temp_dir
-### TODO: create final board-definition files
-### TODO: compress files
-### TODO: copy archive to $curdir/packages/$package_name.zip
-### TODO: create new json definition at $curdir/packages
+#copy board-definition-templates to $temp_dir
+mkdir -p "$temp_dir/$package_name"
+cp "$curdir/templates/boards.txt.template" "$temp_dir/$package_name/boards.txt"
+cp "$curdir/templates/platform.local.txt.template" "$temp_dir/$package_name/platform.local.txt"
+
+#compress files
+compress "$temp_dir/$package_name" "$temp_dir/$package_archive"
+
+### TODO: calculate sha256 checksum
+checksum=""
+
+### TODO: calculate package size
+size=""
+
+#create package.json based on package.json.template
+cp "$curdir/package.json.template" "$temp_dir/${package_name}.json"
+sed -i "s|__DATE__|$package_date|g" "$temp_dir/${package_name}.json"
+sed -i "s|__ARCHIVE__|$package_archive|g" "$temp_dir/${package_name}.json"
+sed -i "s|__SHA256__|$checksum|g" "$temp_dir/${package_name}.json"
+sed -i "s|__SIZE__|$size|g" "$temp_dir/${package_name}.json"
+
+#copy archive to $curdir/packages/$package_archive
+mv "$temp_dir/$package_archive" "$curdir/packages/$package_archive"
+mv "$temp_dir/${package_name}.json" "$curdir/packages/${package_name}.json"
+
 ### TODO: re-create board-manager definition file at $curdir/custom-packages.json
 
-### remove $temp_dir
+#remove $temp_dir
 log "cleaning up temporary directory at $temp_dir"
 rm -rf $temp_dir
 

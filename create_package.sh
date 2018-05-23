@@ -25,7 +25,7 @@ if [[ ! -z $MSYSTEM ]]; then
   local source="$2"
   local target="$3"
   1>/dev/null pushd "$base"
-  "$curdir/gnuwin32_zip_util/zip.exe" -q -9 -r -X "$target" "$source"
+  "$curdir/zip_util_ps/zip_util.bat" "$source" "$target"
   1>/dev/null popd
   return 0
  }

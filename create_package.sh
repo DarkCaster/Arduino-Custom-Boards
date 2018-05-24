@@ -63,6 +63,25 @@ index="package_custom_boards_index.json"
 temp_dir=`mktemp -d`
 log "using temp_directory: $temp_dir"
 
+build_optiboot ()
+{
+ local freq="$1"
+ local baud="$2"
+ local targets="$3"
+ local target=""
+ mkdir -p "$temp_dir/optiboot_build"
+ cp "$curdir/src/external/optiboot/"* "$temp_dir/optiboot_build"
+ 1>/dev/null pushd "$temp_dir/optiboot_build"
+ AVR_FREQ=$freq BAUD_RATE=$baud ./makeall $targets
+ 1>/dev/null popd
+ mkdir -p "$temp_dir/$package_name/bootloaders"
+ for target in $targets
+ do
+  mv "$temp_dir/optiboot_build/optiboot_${target}_${freq}_${baud}.hex" "$temp_dir/$package_name/bootloaders"
+ done
+ rm -rf "$temp_dir/optiboot_build"
+}
+
 #create board-definition files at $temp_dir/$package_name
 mkdir -p "$temp_dir/$package_name"
 dos2unix -q -r -n "$curdir/src/boards.txt" "$temp_dir/$package_name/boards.txt"
@@ -73,6 +92,13 @@ sed -i "s|\(^.*\)\(\.name=.*\)\($\)|\1\2 (with lock setup)\3|" "$temp_dir/$packa
 sed -i "s|\(^\)\([^#].*\)\($\)|\1custom_\2\3|" "$temp_dir/$package_name/programmers.txt"
 mkdir -p "$temp_dir/$package_name/variants/sanguino"
 dos2unix -q -r -n "$curdir/src/external/pins_arduino.h" "$temp_dir/$package_name/variants/sanguino/pins_arduino.h"
+
+#build optiboot for supported platforms
+log "building bootloaders"
+build_optiboot 20000000L 250000 "atmega328 atmega328p atmega328pb"
+build_optiboot 16000000L 250000 "atmega328 atmega328p atmega328pb atmega1284p"
+build_optiboot 8000000L 38400 "atmega328 atmega328p atmega328pb atmega1284p"
+build_optiboot 1000000L 9600 "atmega328 atmega328p atmega328pb"
 
 #compress files
 log "creating archive $package_archive"

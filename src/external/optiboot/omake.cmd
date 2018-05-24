@@ -17,6 +17,7 @@ REM Things are good; try to set the paths and run the compile
 REM --------------------------------------------------------
    call :findArduino
    call :findMake
+   call :findBc
    %DEBUG% Using make %*
    make %*
    IF %ERRORLEVEL% NEQ 0 exit /b %ERRORLEVEL%
@@ -54,6 +55,30 @@ IF "%gotwhich%" NEQ "" (
 
 :nomake
   @echo Can't find Make
+  exit /b 1
+  
+:findBc
+%DEBUG% Looking for bc in current path
+call :clearerrors
+call :which bc.exe
+IF "%gotwhich%" NEQ "" (
+  %DEBUG% bc.exe already installed at %gotwhich%
+  exit /b 123
+) ELSE (
+  %DEBUG% No bc.exe in current path, trying %ScriptRoot%..\..\..\gnuwin32_bc
+  call :shorten %ScriptRoot%..\..\..\gnuwin32_bc
+  PATH %PATH%;!shortout!
+)
+
+call :clearerrors
+call :which bc.exe
+IF "%gotwhich%" NEQ "" (
+  %DEBUG% bc.exe found at %gotwhich%
+  exit /b 123
+)
+
+:nobc
+  @echo Can't find Bc
   exit /b 1
 
 :findArduino

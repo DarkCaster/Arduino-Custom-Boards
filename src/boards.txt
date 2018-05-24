@@ -84,7 +84,7 @@ a328.menu.boot.none.upload.maximum_size=32768
 a328.menu.boot.none.bootloader.high_fuses=0xDF
 a328.menu.boot.none.upload.tool=avrdude_fuseonly
 a328.menu.boot.none.upload.protocol=stk500v1
-a328.menu.boot.none.upload.extra_params=-P {serial.port} -b 115200
+a328.menu.boot.none.upload.extra_params=-P{serial.port} -b115200
 a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
 a328.menu.boot.optiboot=Optiboot
@@ -168,14 +168,17 @@ a1284.menu.version.atmega1284p.build.mcu = atmega1284p
 a1284.menu.clock.anet=16MHz FullSwing Oscillator (Anet 1.0 Board, CKSEL=0110, SUT=01)
 a1284.menu.clock.anet.build.f_cpu=16000000L
 a1284.menu.clock.anet.bootloader.low_fuses=0xD6
+a1284.menu.clock.anet.upload.speed=250000
 
 a1284.menu.clock.8MHz=8MHz External
 a1284.menu.clock.8MHz.build.f_cpu=8000000L
 a1284.menu.clock.8MHz.bootloader.low_fuses=0xFF
+a1284.menu.clock.8MHz.upload.speed=38400
 
 a1284.menu.clock.16MHz=16MHz External
 a1284.menu.clock.16MHz.build.f_cpu=16000000L
 a1284.menu.clock.16MHz.bootloader.low_fuses=0xFF
+a1284.menu.clock.16MHz.upload.speed=250000
 
 ### Locking menu
 a1284.menu.locking.nolock=Unlocked
@@ -196,8 +199,16 @@ a1284.menu.boot.none.upload.maximum_size=131072
 a1284.menu.boot.none.bootloader.high_fuses=0xDF
 a1284.menu.boot.none.upload.tool=avrdude_fuseonly
 a1284.menu.boot.none.upload.protocol=stk500v1
-a1284.menu.boot.none.upload.speed=115200
+a1284.menu.boot.none.upload.extra_params=-P{serial.port} -b115200
 a1284.menu.boot.none.bootloader.tool=avrdude_fuseonly
+
+a1284.menu.boot.optiboot=Optiboot
+a1284.menu.boot.optiboot.upload.maximum_size=130048
+a1284.menu.boot.optiboot.bootloader.high_fuses=0xDF
+a1284.menu.boot.optiboot.upload.tool=arduino:avrdude
+a1284.menu.boot.optiboot.upload.protocol=arduino
+a1284.menu.boot.optiboot.bootloader.tool=arduino:avrdude
+a1284.menu.boot.optiboot.bootloader.file=bootloaders/optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Arduino defines
 a1284.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=sanguino

@@ -19,6 +19,24 @@ trap 'error ${BASH_SOURCE} ${LINENO} $?' ERR
 
 if [[ ! -z $MSYSTEM ]]; then
  log "running on msys"
+ # find arduino installation, and setup avr-gcc
+ log "looking for avr-gcc from arduino installation"
+ program_files=`cygpath "$PROGRAMFILES"`
+ program_files_x86="$program_files (x86)"
+ for test_dir in "$program_files_x86"/Arduino*/hardware/tools/avr/bin "$HOME/AppData/Local/Arduino"*/packages/arduino/tools/avr-gcc/*/bin 
+ do
+  [[ ! -d $test_dir ]] && continue
+  if [[ -e $test_dir/avr-gcc.exe ]]; then
+   log "adding directory $test_dir to path env"
+   arduino_found="true"
+   export PATH="$test_dir:$PATH"
+  fi
+ done
+ [[ $arduino_found != true ]] && log "avr-gcc not found!" && false
+ #use local make utility
+ export PATH="$curdir\gnuwin32_make:$PATH"
+ #use local bc utility
+ export PATH="$curdir\gnuwin32_bc:$PATH"
  compress ()
  {
   local base="$1"

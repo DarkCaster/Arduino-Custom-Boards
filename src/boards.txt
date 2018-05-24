@@ -43,14 +43,17 @@ a328.menu.version.atmega328.build.mcu = atmega328
 a328.menu.clock.8MHz=8MHz External
 a328.menu.clock.8MHz.build.f_cpu=8000000L
 a328.menu.clock.8MHz.bootloader.low_fuses=0xFF
+a328.menu.clock.8MHz.upload.speed=38400
 
 a328.menu.clock.16MHz=16MHz External
 a328.menu.clock.16MHz.build.f_cpu=16000000L
 a328.menu.clock.16MHz.bootloader.low_fuses=0xFF
+a328.menu.clock.16MHz.upload.speed=250000
 
 a328.menu.clock.20MHz=20MHz External
 a328.menu.clock.20MHz.build.f_cpu=20000000L
 a328.menu.clock.20MHz.bootloader.low_fuses=0xFF
+a328.menu.clock.20MHz.upload.speed=250000
 
 a328.menu.clock.I1MHz=1MHz Internal
 a328.menu.clock.I1MHz.build.f_cpu=1000000L
@@ -84,13 +87,13 @@ a328.menu.boot.none.upload.protocol=stk500v1
 a328.menu.boot.none.upload.extra_params=-P {serial.port} -b 115200
 a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
-a328.menu.boot.none=Optiboot
-a328.menu.boot.none.upload.maximum_size=32256
-a328.menu.boot.none.bootloader.high_fuses=0xDF
-a328.menu.boot.none.upload.tool=arduino:avrdude
-a328.menu.boot.none.upload.protocol=arduino
-a328.menu.boot.none.bootloader.tool=arduino:avrdude
-a328.menu.boot.none.bootloader.file=bootloaders/optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+a328.menu.boot.optiboot=Optiboot
+a328.menu.boot.optiboot.upload.maximum_size=32256
+a328.menu.boot.optiboot.bootloader.high_fuses=0xDF
+a328.menu.boot.optiboot.upload.tool=arduino:avrdude
+a328.menu.boot.optiboot.upload.protocol=arduino
+a328.menu.boot.optiboot.bootloader.tool=arduino:avrdude
+a328.menu.boot.optiboot.bootloader.file=bootloaders/optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Arduino defines
 a328.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=standard

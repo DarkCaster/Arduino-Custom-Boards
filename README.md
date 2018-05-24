@@ -14,9 +14,11 @@ Supported boards:
  - ATmega1284P based boards. Added mainly for Anet v1.0 board support (used in Anet A6\A8\E10 and other 3D-printers).
 
 Third-party code used in this project:
- - pins_arduino.h from https://github.com/Lauszus/Sanguino project for ATmega1284P support
- - programmers.txt from https://github.com/arduino/ArduinoCore-avr project to implement some ISP programmer tweaks
- - using some ideas and code examples from https://github.com/sleemanj/optiboot and https://github.com/SkyNet3D/anet-board projects
+ - pins_arduino.h from https://github.com/Lauszus/Sanguino project for ATmega1284P support;
+ - programmers.txt from https://github.com/arduino/ArduinoCore-avr project to implement some ISP programmer tweaks;
+ - optiboot bootloader sources (and some build scripts) from https://github.com/sleemanj/optiboot project;
+ - using some ideas and code examples from https://github.com/SkyNet3D/anet-board projects;
+ - make and bc binaries for windows from GnuWin32 project: http://gnuwin32.sourceforge.net;
 
 Tested with Arduino IDE v1.8.5.
 Older versions is not tested and may not be supported.

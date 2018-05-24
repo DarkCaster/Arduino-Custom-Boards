@@ -1,0 +1,223 @@
+################################################################################
+#
+#  ATMEGA8 Series Pin Compatible Microcontrollers
+#
+#   ATMega8,   ATMega8A,
+#   ATMega88,  ATMega88A,  ATMega88P,  ATMega88PA, ATMega88PB 
+#   ATMega168, ATMega168A, ATMega168P, ATMega168PA, ATMega168PB
+#   ATMega328, ATMega328P, ATMega328PB
+#   ATMega48,  ATMega48A,  ATMega48P, ATMega48PA, ATMega48PB
+#           
+#  These microcontrollers are essentially pin compatible in a DIP 28 and TQFP 32
+#  package, the differ mostly in memory (but not only).
+#
+#  The 48 and 48P are quite special cases, because they do not have a boot 
+#  section of memory, so they use the VIRTUAL_BOOT function of optiboot.
+#
+#  A number of the updated ("A", "B") versions are not known about by 
+#  avr-gcc so we are just treating them as the original version - this should
+#  be fine, as long as the signature bytes are not changing (usually don't).
+#
+# See README.md for information in general about THIS version of optiboot.
+#
+################################################################################
+
+
+## ATMEGA328 / 328P                                                          {{{
+#  
+#  328 and 328p both result in the same code, but this is only because of the 
+#  fact that /usr/lib/avr/include/avr/io.h includes iom328p.h for both the 
+#  varients which causes the signature bytes to ALWAYS be the 328p ones
+#  
+#  If that include error (feature?) is ever fixed in avr-libc then the optiboot
+#  binary would be different for 328 and 328p
+#
+################################################################################
+
+_atmega8_: BOOTLOADER_RESERVED = $(if $(call is_big_bootloader), 1024, 512)
+_atmega8_: RESET_VECTOR = 0
+_atmega8_: FEATURES += 
+_atmega8_: _optiboot_
+
+atmega328:  TARGET=atmega328
+atmega328:  FLASH_SIZE=32768
+atmega328:  _atmega8_
+
+atmega328p:  TARGET=atmega328p
+atmega328p:  FLASH_SIZE=32768
+atmega328p:  _atmega8_
+
+# 328pa is not known by avr-gcc, so we use 328p for MCU_TARGET
+atmega328pa:  TARGET=atmega328pa
+atmega328pa:  MCU_TARGET=atmega328p
+atmega328pa:  FLASH_SIZE=32768
+atmega328pa:  _atmega8_
+
+# 328pb is not known by avr-gcc, so we use 328p for MCU_TARGET
+atmega328pb:  TARGET=atmega328pb
+atmega328pb:  MCU_TARGET=atmega328p
+atmega328pb:  FLASH_SIZE=32768
+atmega328pb:  _atmega8_
+
+
+#############################################################################}}}
+
+## ATMEGA168/168p                                                            {{{
+#  
+# The 168 and 168p have different signatures, and avr/io.h treats them as 
+# different chips also, so unlike the 328/328p pairing, these ones do have 
+# a different binary for 168 and 168p
+#
+################################################################################
+
+atmega168:  TARGET=atmega168
+atmega168:  FLASH_SIZE=16384
+atmega168:  _atmega8_
+
+atmega168a:  TARGET=atmega168a
+atmega168a:  FLASH_SIZE=16384
+atmega168a:  _atmega8_
+
+atmega168p:  TARGET=atmega168p
+atmega168p:  FLASH_SIZE=16384
+atmega168p:  _atmega8_
+
+# 168pa is not known by avr-libc so we use 168p
+atmega168pa:  TARGET=atmega168pa
+atmega168pa:  MCU_TARGET=atmega168p
+atmega168pa:  FLASH_SIZE=16384
+atmega168pa:  _atmega8_
+
+# 168pb is not known by avr-gcc so we use 168p
+atmega168pb:  TARGET=atmega168pb
+atmega168pb:  MCU_TARGET=atmega168p
+atmega168pb:  FLASH_SIZE=16384
+atmega168pb:  _atmega8_
+
+#############################################################################}}}
+
+## ATMEGA88/88P                                                              {{{
+#
+# The 88 and 88P have different signatures, and avr/io.h treats them as 
+# different chips also, so unlike the 328/328p pairing, these ones do have 
+# a different binary for 88 and 88P
+#
+# Note that 88PA is same as 88P, use that.
+#
+# NB: I do not know why the -Wl,--undefined=optiboot_version option is required, 
+#  I suspect it's something to do with OS/X developers.
+#  On Linux, seems to be fine without but I'll leave it in anyway.
+################################################################################
+
+atmega88:  TARGET=atmega88
+atmega88:  FLASH_SIZE=8192
+atmega88:  _atmega8_
+
+atmega88p:  TARGET=atmega88p
+atmega88p:  FLASH_SIZE=8192
+atmega88p:  _atmega8_
+
+atmega88a:  TARGET=atmega88a
+atmega88a:  FLASH_SIZE=8192
+atmega88a:  _atmega8_
+
+atmega88pa:  TARGET=atmega88pa
+atmega88pa:  FLASH_SIZE=8192
+atmega88pa:  _atmega8_
+
+# 88pb is not known by avr-gcc, we use 88pa instead
+atmega88pb:  TARGET=atmega88pb
+atmega88pb:  MCU_TARGET = atmega88pa
+atmega88pb:  FLASH_SIZE=8192
+atmega88pb:  _atmega8_
+
+#############################################################################}}}
+
+## ATMEGA8                                                                   {{{
+#
+# The Atmega8 is similar to the Atmega88, main difference is that it doesn't have
+# pin change interrupts on all the pins like the 88 so only has the two explicit
+# interrupt pins and doesn't have debugWire not that Arduino users will need that.
+#
+# avr-gcc doesn't know about the 8A, so we target the 8 instead for that
+#  yes this means that the binaries are identical and ther'es no difference
+#  but one day maybe avr-gcc will treat it differently
+#
+# NB: I do not know why the -Wl,--undefined=optiboot_version option is required, 
+#  I suspect it's something to do with OS/X developers.
+#  On Linux, seems to be fine without but I'll leave it in anyway.
+################################################################################
+
+atmega8:  TARGET=atmega8
+atmega8:  FLASH_SIZE=8192
+atmega8:  _atmega8_
+
+atmega8a:  TARGET=atmega8a
+atmega8a:  MCU_TARGET = atmega8
+atmega8a:  FLASH_SIZE=8192
+atmega8a:  _atmega8_
+
+#############################################################################}}}
+
+## ATMEGA48/48P                                                              {{{
+#  
+# The 48 and 48P have different signatures, and avr/io.h treats them as 
+#  different chips also, so unlike the 328/328p pairing, these ones do have 
+#  a different binary for 48 and 48P
+#
+# The 48 does not have a protected boot section of flash, so we have to use the 
+#  virtual boot method of optiboot.  
+#
+# NOTE! In the datasheet "Interrupt vectors in ATmega48" the "Vector no." is 
+#        counted 1 to 26, but we want to use the program address 0 to 25.  Sigh.
+#       Hello, Atmel datasheet authors, WE PROGRAMMERS COUNT FROM FREAKING ZERO.
+#
+#  Vector 25 is SPM_READY, optiboot.c indicates that this is little used and is
+#   the default for optiboot to use (that is, SPM_READY, not necessarily that
+#   it is vector number 25).  I'm not sure that it's entirely ok to use 25...
+#
+#  Vector 23 is analog comparator, if 25 does funky stuff, then 23 would be a
+#   good choice, few people would use the analog comparator in Arduino world.
+#
+# Take care to also set the fuse to enable self programming, unlike the other
+#  chips you can turn this function on or off, of course we need it on!
+#
+# Note that you may need to adjust the --section-start if your avr-gcc compiles
+# to a larger size, I have set these to have an extra 10 bytes over the sizes
+# which they compiled to on my specific system, just in case in future there
+# is any expansion (eh, the normal boot sections are about 10 bytes larger than
+# they need to be so I figure it's a good guess).
+#
+# 48p/pa/pb compiles to 579 bytes without LED flashing.
+#    +2 for version +1 for cal +10 for future; = 592 bytes; 4096-592=3504=0x0db0
+#
+# 48/a compiles to 554 bytes without LED flashing
+#    +2 for version +10 for future; = 568 bytes; 4096-568=3520=0x0dca
+################################################################################
+
+
+_atmega48_: FLASH_SIZE   = 4096
+_atmega48_: RESET_VECTOR = 25
+_atmega48_: FEATURES    += VIRTUAL_BOOT_PARTITION
+_atmega48_: _optiboot_
+
+atmega48: TARGET         = atmega48
+atmega48: _atmega48_
+
+atmega48p: TARGET        = atmega48p
+atmega48p: _atmega48_
+
+# avr-libc doesn't know about the 48PA, we use 48P instead
+atmega48pa: TARGET       = atmega48pa
+atmega48pa: MCU_TARGET   = atmega48p
+atmega48pa: _atmega48_
+
+# avr-gcc doesn't know about the 48PB, we use 48P instead
+atmega48pb: TARGET       = atmega48pb
+atmega48pb: MCU_TARGET   = atmega48p
+atmega48pb: _atmega48_
+
+atmega48a: TARGET       = atmega48a
+atmega48a: _atmega48_
+
+#############################################################################}}}

@@ -93,7 +93,7 @@ a328.menu.boot.optiboot.bootloader.high_fuses=0xDF
 a328.menu.boot.optiboot.upload.tool=arduino:avrdude
 a328.menu.boot.optiboot.upload.protocol=arduino
 a328.menu.boot.optiboot.bootloader.tool=arduino:avrdude
-a328.menu.boot.optiboot.bootloader.file=bootloaders/optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+a328.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Arduino defines
 a328.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=standard
@@ -208,7 +208,7 @@ a1284.menu.boot.optiboot.bootloader.high_fuses=0xDF
 a1284.menu.boot.optiboot.upload.tool=arduino:avrdude
 a1284.menu.boot.optiboot.upload.protocol=arduino
 a1284.menu.boot.optiboot.bootloader.tool=arduino:avrdude
-a1284.menu.boot.optiboot.bootloader.file=bootloaders/optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+a1284.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Arduino defines
 a1284.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=sanguino

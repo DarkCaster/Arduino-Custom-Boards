@@ -324,12 +324,14 @@ atmega1284_isp: HFUSE ?= DE
 atmega1284_isp: EFUSE ?= 05
 atmega1284_isp: isp
 
+atmega1284p: _check_baud_rate_
 atmega1284p: TARGET = atmega1284p
 atmega1284p: MCU_TARGET = atmega1284p
 atmega1284p: CFLAGS += $(COMMON_OPTIONS) $(UART_CMD) -DBIGBOOT
 atmega1284p: AVR_FREQ ?= 8000000L
 atmega1284p: LDSECTIONS  = -Wl,--section-start=.text=0x1fc00 -Wl,--section-start=.version=0x1fffe
 atmega1284p: $(PROGRAM)_atmega1284p_$(AVR_FREQ)_$(BAUD_RATE).hex
+
 
 atmega1284p_isp: atmega1284p
 atmega1284p_isp: TARGET = atmega1284p_$(AVR_FREQ)_$(BAUD_RATE)

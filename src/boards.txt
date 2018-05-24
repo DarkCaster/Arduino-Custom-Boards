@@ -81,8 +81,16 @@ a328.menu.boot.none.upload.maximum_size=32768
 a328.menu.boot.none.bootloader.high_fuses=0xDF
 a328.menu.boot.none.upload.tool=avrdude_fuseonly
 a328.menu.boot.none.upload.protocol=stk500v1
-a328.menu.boot.none.upload.speed=115200
+a328.menu.boot.none.upload.extra_params=-P {serial.port} -b 115200
 a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
+
+a328.menu.boot.none=Optiboot
+a328.menu.boot.none.upload.maximum_size=32256
+a328.menu.boot.none.bootloader.high_fuses=0xDF
+a328.menu.boot.none.upload.tool=arduino:avrdude
+a328.menu.boot.none.upload.protocol=arduino
+a328.menu.boot.none.bootloader.tool=arduino:avrdude
+a328.menu.boot.none.bootloader.file=bootloaders/optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Arduino defines
 a328.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=standard

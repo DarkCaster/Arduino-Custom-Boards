@@ -89,7 +89,7 @@ a328.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
 a328.menu.boot.optiboot=Optiboot
 a328.menu.boot.optiboot.upload.maximum_size=32256
-a328.menu.boot.optiboot.bootloader.high_fuses=0xDF
+a328.menu.boot.optiboot.bootloader.high_fuses=0xDE
 a328.menu.boot.optiboot.upload.tool=arduino:avrdude
 a328.menu.boot.optiboot.upload.protocol=arduino
 a328.menu.boot.optiboot.bootloader.tool=arduino:avrdude
@@ -204,7 +204,7 @@ a1284.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
 a1284.menu.boot.optiboot=Optiboot
 a1284.menu.boot.optiboot.upload.maximum_size=130048
-a1284.menu.boot.optiboot.bootloader.high_fuses=0xDF
+a1284.menu.boot.optiboot.bootloader.high_fuses=0xDE
 a1284.menu.boot.optiboot.upload.tool=arduino:avrdude
 a1284.menu.boot.optiboot.upload.protocol=arduino
 a1284.menu.boot.optiboot.bootloader.tool=arduino:avrdude

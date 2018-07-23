@@ -107,6 +107,38 @@
    "version": "4.9.2-atmel3.5.4-arduino2"
   }
  ]
+},
+{
+ "name": "Custom AVR board-definitions",
+ "architecture": "avr",
+ "version": "2018.7.23",
+ "category": "Contributed",
+ "help":
+ {
+  "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"
+ },
+ "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards_2018.7.23.zip",
+ "archiveFileName": "custom_boards_2018.7.23.zip",
+ "checksum": "SHA-256:593b212ea828a4ca861075492765e4acbf8c12df750ab0e96733061fbce9e39f",
+ "size": "17997",
+ "boards":
+ [
+  {"name": "ATmega328"},
+  {"name": "ATmega1284"}
+ ],
+ "toolsDependencies":
+ [
+  {
+   "packager": "arduino",
+   "name": "avrdude",
+   "version": "6.3.0-arduino9"
+  },
+  {
+   "packager": "arduino",
+   "name": "avr-gcc",
+   "version": "4.9.2-atmel3.5.4-arduino2"
+  }
+ ]
 }   ],
    "tools": [ ]
   }

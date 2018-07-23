@@ -5,6 +5,7 @@ menu.clock = Clock
 menu.locking = Locking
 menu.boot = Bootloader
 menu.defines = Board variant
+menu.bod = Brown-out detection
 
 ### ATmega328P
 ##############################################################
@@ -94,6 +95,17 @@ a328.menu.boot.optiboot.upload.tool=arduino:avrdude
 a328.menu.boot.optiboot.upload.protocol=arduino
 a328.menu.boot.optiboot.bootloader.tool=arduino:avrdude
 a328.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+
+### Brown-out detection
+a328.menu.bod.b27v=BOD VCC=2.7v
+a328.menu.bod.b27v.bootloader.extended_fuses=0xFD
+
+a328.menu.bod.b18v=BOD VCC=1.8v
+a328.menu.bod.b18v.bootloader.extended_fuses=0xFE
+
+a328.menu.bod.none=BOD disabled
+a328.menu.bod.none.bootloader.extended_fuses=0xFF
+
 
 ### Arduino defines
 a328.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=standard

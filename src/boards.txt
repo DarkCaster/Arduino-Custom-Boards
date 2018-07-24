@@ -44,7 +44,7 @@ a328.menu.version.atmega328.build.mcu = atmega328
 a328.menu.clock.8MHz=8MHz External
 a328.menu.clock.8MHz.build.f_cpu=8000000L
 a328.menu.clock.8MHz.bootloader.low_fuses=0xFF
-a328.menu.clock.8MHz.upload.speed=38400
+a328.menu.clock.8MHz.upload.speed=19200
 
 a328.menu.clock.16MHz=16MHz External
 a328.menu.clock.16MHz.build.f_cpu=16000000L
@@ -64,7 +64,7 @@ a328.menu.clock.I1MHz.upload.speed=9600
 a328.menu.clock.I8MHz=8MHz Internal
 a328.menu.clock.I8MHz.build.f_cpu=8000000L
 a328.menu.clock.I8MHz.bootloader.low_fuses=0xE2
-a328.menu.clock.I8MHz.upload.speed=38400
+a328.menu.clock.I8MHz.upload.speed=19200
 
 ### Locking menu
 a328.menu.locking.nolock=Unlocked
@@ -185,7 +185,7 @@ a1284.menu.clock.anet.upload.speed=250000
 a1284.menu.clock.8MHz=8MHz External
 a1284.menu.clock.8MHz.build.f_cpu=8000000L
 a1284.menu.clock.8MHz.bootloader.low_fuses=0xFF
-a1284.menu.clock.8MHz.upload.speed=38400
+a1284.menu.clock.8MHz.upload.speed=19200
 
 a1284.menu.clock.16MHz=16MHz External
 a1284.menu.clock.16MHz.build.f_cpu=16000000L

@@ -14,7 +14,8 @@
  "boards":
  [
   {"name": "ATmega328"},
-  {"name": "ATmega1284"}
+  {"name": "ATmega1284"},
+  {"name": "ATmega2560"}
  ],
  "toolsDependencies":
  [

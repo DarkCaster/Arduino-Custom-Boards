@@ -165,7 +165,7 @@ a1284.build.mcu=atmega1284p
 a1284.build.f_cpu=16000000L
 a1284.build.core=arduino:arduino
 a1284.build.variant=sanguino
-a1284.build.board=AVR_CUSTOM_BOARD
+a1284.build.board=AVR_SANGUINO
 a1284.upload.tool=arduino:avrdude
 a1284.upload.speed=57600
 a1284.bootloader.tool=arduino:avrdude
@@ -223,13 +223,13 @@ a1284.menu.boot.optiboot.bootloader.tool=arduino:avrdude
 a1284.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Arduino defines
-a1284.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=sanguino
-a1284.menu.defines.custom_board.build.board=AVR_CUSTOM_BOARD
-a1284.menu.defines.custom_board.build.variant=sanguino
-
 a1284.menu.defines.sanguino=AVR_SANGUINO; variant=sanguino
 a1284.menu.defines.sanguino.build.board=AVR_SANGUINO
 a1284.menu.defines.sanguino.build.variant=sanguino
+
+a1284.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=sanguino
+a1284.menu.defines.custom_board.build.board=AVR_CUSTOM_BOARD
+a1284.menu.defines.custom_board.build.variant=sanguino
 
 ### ATmega2560
 ##############################################################
@@ -247,7 +247,7 @@ a2560.bootloader.lock_bits=0x3F
 a2560.build.mcu=atmega2560
 a2560.build.f_cpu=16000000L
 a2560.build.core=arduino:arduino
-a2560.build.variant=mega
+a2560.build.variant=arduino:mega
 a2560.build.board=AVR_MEGA2560
 a2560.upload.tool=arduino:avrdude
 a2560.upload.speed=57600
@@ -307,8 +307,8 @@ a2560.menu.bod.none.bootloader.extended_fuses=0xFF
 ### Arduino defines
 a2560.menu.defines.mega=AVR_MEGA2560; variant=mega
 a2560.menu.defines.mega.build.board=AVR_MEGA2560
-a2560.menu.defines.mega.build.variant=mega
+a2560.menu.defines.mega.build.variant=arduino:mega
 
 a2560.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=mega
 a2560.menu.defines.custom_board.build.board=AVR_CUSTOM_BOARD
-a2560.menu.defines.custom_board.build.variant=mega
+a2560.menu.defines.custom_board.build.variant=arduino:mega

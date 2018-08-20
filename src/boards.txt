@@ -230,3 +230,85 @@ a1284.menu.defines.custom_board.build.variant=sanguino
 a1284.menu.defines.sanguino=AVR_SANGUINO; variant=sanguino
 a1284.menu.defines.sanguino.build.board=AVR_SANGUINO
 a1284.menu.defines.sanguino.build.variant=sanguino
+
+### ATmega2560
+##############################################################
+
+a2560.name=Custom ATmega2560 based board
+
+### Base fuses and lock_bits
+a2560.bootloader.low_fuses=0xFF
+a2560.bootloader.high_fuses=0xDF
+a2560.bootloader.extended_fuses=0xFD
+a2560.bootloader.unlock_bits=0x3F
+a2560.bootloader.lock_bits=0x3F
+
+### Other definitions
+a2560.build.mcu=atmega2560
+a2560.build.f_cpu=16000000L
+a2560.build.core=arduino:arduino
+a2560.build.variant=mega
+a2560.build.board=AVR_MEGA2560
+a2560.upload.tool=arduino:avrdude
+a2560.upload.speed=57600
+a2560.bootloader.tool=arduino:avrdude
+a2560.upload.tool=arduino:avrdude
+a2560.upload.maximum_data_size=8192
+
+### Clock Menu
+a2560.menu.clock.16MHz=16MHz External (Arduino Mega 2560)
+a2560.menu.clock.16MHz.build.f_cpu=16000000L
+a2560.menu.clock.16MHz.bootloader.low_fuses=0xFF
+a2560.menu.clock.16MHz.upload.speed=250000
+
+### Locking menu
+a2560.menu.locking.nolock=Unlocked
+a2560.menu.locking.nolock.bootloader.lock_bits=0x3F
+
+a2560.menu.locking.lpmspm_b=Disable LPM/SPM in boot section only
+a2560.menu.locking.lpmspm_b.bootloader.lock_bits=0x0F
+
+a2560.menu.locking.lpmspm_ba=Disable LPM/SPM in boot and app sections
+a2560.menu.locking.lpmspm_ba.bootloader.lock_bits=0x03
+
+a2560.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable further programming
+a2560.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
+
+### Bootloader Menu
+a2560.menu.boot.none=No bootloader (sketch upload use AVR ISP)
+a2560.menu.boot.none.upload.maximum_size=262144
+a2560.menu.boot.none.bootloader.high_fuses=0xDF
+a2560.menu.boot.none.upload.tool=avrdude_fuseonly
+a2560.menu.boot.none.upload.protocol=stk500v1
+a2560.menu.boot.none.upload.extra_params=-P{serial.port} -b115200
+a2560.menu.boot.none.bootloader.tool=avrdude_fuseonly
+
+a2560.menu.boot.optiboot=Optiboot
+a2560.menu.boot.optiboot.upload.maximum_size=261120
+a2560.menu.boot.optiboot.bootloader.high_fuses=0xDE
+a2560.menu.boot.optiboot.upload.tool=arduino:avrdude
+a2560.menu.boot.optiboot.upload.protocol=arduino
+a2560.menu.boot.optiboot.bootloader.tool=arduino:avrdude
+a2560.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+
+### Brown-out detection
+a2560.menu.bod.b43v=BOD VCC=4.3v
+a2560.menu.bod.b43v.bootloader.extended_fuses=0xFC
+
+a2560.menu.bod.b27v=BOD VCC=2.7v
+a2560.menu.bod.b27v.bootloader.extended_fuses=0xFD
+
+a2560.menu.bod.b18v=BOD VCC=1.8v
+a2560.menu.bod.b18v.bootloader.extended_fuses=0xFE
+
+a2560.menu.bod.none=BOD disabled
+a2560.menu.bod.none.bootloader.extended_fuses=0xFF
+
+### Arduino defines
+a2560.menu.defines.mega=AVR_MEGA2560; variant=mega
+a2560.menu.defines.mega.build.board=AVR_MEGA2560
+a2560.menu.defines.mega.build.variant=mega
+
+a2560.menu.defines.custom_board=AVR_CUSTOM_BOARD; variant=mega
+a2560.menu.defines.custom_board.build.board=AVR_CUSTOM_BOARD
+a2560.menu.defines.custom_board.build.variant=mega

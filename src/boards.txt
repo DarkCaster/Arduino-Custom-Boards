@@ -250,7 +250,7 @@ a2560.build.core=arduino:arduino
 a2560.build.variant=arduino:mega
 a2560.build.board=AVR_MEGA2560
 a2560.upload.tool=arduino:avrdude
-a2560.upload.speed=115200
+a2560.upload.speed=250000
 a2560.bootloader.tool=arduino:avrdude
 a2560.upload.tool=arduino:avrdude
 a2560.upload.maximum_data_size=8192
@@ -259,7 +259,7 @@ a2560.upload.maximum_data_size=8192
 a2560.menu.clock.16MHz=16MHz External (Arduino Mega 2560)
 a2560.menu.clock.16MHz.build.f_cpu=16000000L
 a2560.menu.clock.16MHz.bootloader.low_fuses=0xFF
-a2560.menu.clock.16MHz.upload.speed=115200
+a2560.menu.clock.16MHz.upload.speed=250000
 
 ### Locking menu
 a2560.menu.locking.nolock=Unlocked

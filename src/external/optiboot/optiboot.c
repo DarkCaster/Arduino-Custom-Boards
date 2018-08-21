@@ -1096,10 +1096,15 @@ void appStart(uint8_t rstFlags) {
   // Note that appstart_vec is defined so that this works with either
   // real or virtual boot partitions.
   __asm__ __volatile__ (
+#if !defined(RAMPZ) || defined(VIRTUAL_BOOT_PARTITION)
     // Jump to 'save' or RST vector
     "ldi r30,%[rstvec]\n"
     "clr r31\n"
     "ijmp\n"::[rstvec] "M"(appstart_vec)
+#else
+    // use absolute jump for devices with lot of flash
+    "jmp 0\n"::
+#endif
   );
 }
 

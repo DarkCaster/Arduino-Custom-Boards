@@ -40,6 +40,7 @@
 /*   ATmega644P based devices (Sanguino)                  */
 /*   ATmega1284P based devices                            */
 /*   ATmega1280 based devices (Arduino Mega)              */
+/*   ATmega2560 based devices (Arduino Mega)              */
 /*                                                        */
 /* Alpha test                                             */
 /*   ATmega32                                             */
@@ -780,16 +781,38 @@ int main(void) {
       highAddress = getch();
       address |= (uint16_t)highAddress << 8;
 #ifdef RAMPZ
-      // Transfer top bit to RAMPZ
-      RAMPZ = (highAddress & 0x80) ? 1 : 0;
+      // Transfer top bit to LSB in RAMPZ
+      if (highAddress & 0x80) {
+        RAMPZ |= 0x01;
+      }
+      else {
+        RAMPZ &= 0xFE;
+      }
 #endif
       address += address; // Convert from word address to byte address
       verifySpace();
     }
     else if(ch == STK_UNIVERSAL) {
-      // UNIVERSAL command is ignored
-      getNch(4);
-      putch(0x00);
+#ifdef RAMPZ
+      // LOAD_EXTENDED_ADDRESS is needed in STK_UNIVERSAL for addressing more than 128kB
+      if ( AVR_OP_LOAD_EXT_ADDR == getch() ) {
+        // get address
+        getch();  // get '0'
+        RAMPZ = (RAMPZ & 0x01) | ((getch() << 1) & 0xff);  // get address and put it in RAMPZ
+        getNch(1); // get last '0'
+        // response
+        putch(0x00);
+      }
+      else {
+        // everything else is ignored
+        getNch(3);
+        putch(0x00);
+      }
+#else
+       // UNIVERSAL command is ignored
+       getNch(4);
+       putch(0x00);
+#endif
     }
     /* Write memory, length is big endian and is in bytes */
     else if(ch == STK_PROG_PAGE) {

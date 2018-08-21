@@ -335,20 +335,12 @@ OPTIMIZE = -Os -fno-split-wide-types -mrelax -fno-caller-saves
 
 DEFS       = 
 
-#
-# platforms support EEPROM and large bootloaders need the eeprom functions that
-# are defined in libc, even though we explicity remove it with -nostdlib because
-# of the space-savings.
-LIBS       =  -lc
-
 CC         = $(GCCROOT)avr-gcc
 
 # Override is only needed by avr-lib build system.
 
 override CFLAGS        = -g -Wall $(OPTIMIZE) -mmcu=$(_MCU_TARGET) -DF_CPU=$(_AVR_FREQ) -DBAUD_RATE=$(_BAUD_RATE) -Dsave_vect_num=$(_RESET_VECTOR) $(_CFLAGS) $(COMMON_OPTIONS) $(DEFS)
 override LDFLAGS       = -g $(LDSECTIONS) -Wl,--relax -nostartfiles
-#-nostdlib
-#-Wl,--gc-sections
 
 OBJCOPY        = $(GCCROOT)avr-objcopy
 OBJDUMP        = $(call fixpath,$(GCCROOT)avr-objdump)

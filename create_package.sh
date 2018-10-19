@@ -23,7 +23,7 @@ if [[ ! -z $MSYSTEM ]]; then
  log "looking for avr-gcc from arduino installation"
  program_files=`cygpath "$PROGRAMFILES"`
  program_files_x86="$program_files (x86)"
- for test_dir in "$program_files_x86"/Arduino*/hardware/tools/avr/bin "$HOME/AppData/Local/Arduino"*/packages/arduino/tools/avr-gcc/*/bin 
+ for test_dir in "$program_files_x86"/Arduino*/hardware/tools/avr/bin "$HOME/AppData/Local/Arduino"*/packages/arduino/tools/avr-gcc/*/bin
  do
   [[ ! -d $test_dir ]] && continue
   if [[ -e $test_dir/avr-gcc.exe ]]; then
@@ -50,7 +50,7 @@ if [[ ! -z $MSYSTEM ]]; then
 else
   # find arduino installation, and setup avr-gcc
   log "looking for avr-gcc from arduino installation"
-  for test_dir in "$HOME"/arduino-*/hardware/tools/avr/bin "$HOME/.arduino"*/packages/arduino/tools/avr-gcc/*/bin
+  for test_dir in /usr/bin "$HOME"/arduino-*/hardware/tools/avr/bin "$HOME/.arduino"*/packages/arduino/tools/avr-gcc/*/bin
   do
    [[ ! -d $test_dir ]] && continue
    if [[ -e $test_dir/avr-gcc ]]; then

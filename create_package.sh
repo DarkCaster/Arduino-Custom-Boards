@@ -60,11 +60,17 @@ else
    fi
   done
   [[ $arduino_found != true ]] && log "avr-gcc not found!" && false
- compress ()
- {
-  log "TODO"
-  return 1
- }
+  [[ -z `2>/dev/null which zip` ]] && log "zip (Info-zip) utility not found!" && false
+  compress ()
+  {
+   local base="$1"
+   local source="$2"
+   local target="$3"
+   1>/dev/null pushd "$base"
+   zip -9 -r "$source" "$target"
+   1>/dev/null popd
+   return 0
+  }
 fi
 
 mkdir -p "$curdir/packages"

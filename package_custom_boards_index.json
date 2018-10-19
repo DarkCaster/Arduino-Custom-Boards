@@ -15,6 +15,39 @@
 {
  "name": "Custom AVR board-definitions",
  "architecture": "avr",
+ "version": "2018.10.19",
+ "category": "Contributed",
+ "help":
+ {
+  "online": "https://github.com/DarkCaster/Arduino-Custom-Boards"
+ },
+ "url": "https://raw.githubusercontent.com/DarkCaster/Arduino-Custom-Boards/master/packages/custom_boards_2018.10.19.zip",
+ "archiveFileName": "custom_boards_2018.10.19.zip",
+ "checksum": "SHA-256:70ac5d377e46583a43fbfea6fae3dff49c03c73217034d69162a337cc2b7a85b",
+ "size": "21170",
+ "boards":
+ [
+  {"name": "ATmega328"},
+  {"name": "ATmega1284"},
+  {"name": "ATmega2560"}
+ ],
+ "toolsDependencies":
+ [
+  {
+   "packager": "arduino",
+   "name": "avrdude",
+   "version": "6.3.0-arduino14"
+  },
+  {
+   "packager": "arduino",
+   "name": "avr-gcc",
+   "version": "5.4.0-atmel3.6.1-arduino2"
+  }
+ ]
+},
+{
+ "name": "Custom AVR board-definitions",
+ "architecture": "avr",
  "version": "2018.5.23",
  "category": "Contributed",
  "help":

@@ -259,7 +259,6 @@ a2560.upload.maximum_data_size=8192
 a2560.menu.clock.16MHz=16MHz External (Arduino Mega 2560)
 a2560.menu.clock.16MHz.build.f_cpu=16000000L
 a2560.menu.clock.16MHz.bootloader.low_fuses=0xFF
-a2560.menu.clock.16MHz.upload.speed=250000
 
 ### Locking menu
 a2560.menu.locking.nolock=Unlocked
@@ -283,13 +282,23 @@ a2560.menu.boot.none.upload.protocol=stk500v1
 a2560.menu.boot.none.upload.extra_params=-P{serial.port} -b115200
 a2560.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
-a2560.menu.boot.optiboot=Optiboot
-a2560.menu.boot.optiboot.upload.maximum_size=261120
-a2560.menu.boot.optiboot.bootloader.high_fuses=0xDE
-a2560.menu.boot.optiboot.upload.tool=arduino:avrdude
-a2560.menu.boot.optiboot.upload.protocol=arduino
-a2560.menu.boot.optiboot.bootloader.tool=arduino:avrdude
-a2560.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+a2560.menu.boot.optiboot_slow=Optiboot (baud 115200)
+a2560.menu.boot.optiboot_slow.upload.maximum_size=261120
+a2560.menu.boot.optiboot_slow.bootloader.high_fuses=0xDE
+a2560.menu.boot.optiboot_slow.upload.tool=arduino:avrdude
+a2560.menu.boot.optiboot_slow.upload.protocol=arduino
+a2560.menu.boot.optiboot_slow.upload.speed=115200
+a2560.menu.boot.optiboot_slow.bootloader.tool=arduino:avrdude
+a2560.menu.boot.optiboot_slow.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+
+a2560.menu.boot.optiboot_fast=Optiboot (baud 250000)
+a2560.menu.boot.optiboot_fast.upload.maximum_size=261120
+a2560.menu.boot.optiboot_fast.bootloader.high_fuses=0xDE
+a2560.menu.boot.optiboot_fast.upload.tool=arduino:avrdude
+a2560.menu.boot.optiboot_fast.upload.protocol=arduino
+a2560.menu.boot.optiboot_fast.upload.speed=250000
+a2560.menu.boot.optiboot_fast.bootloader.tool=arduino:avrdude
+a2560.menu.boot.optiboot_fast.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Brown-out detection
 a2560.menu.bod.b43v=BOD VCC=4.3v

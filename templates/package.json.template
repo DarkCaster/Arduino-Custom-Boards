@@ -21,13 +21,11 @@
  [
   {
    "packager": "arduino",
-   "name": "avrdude",
-   "version": "6.3.0-arduino9"
+   "name": "avrdude"
   },
   {
    "packager": "arduino",
-   "name": "avr-gcc",
-   "version": "4.9.2-atmel3.5.4-arduino2"
+   "name": "avr-gcc"
   }
  ]
 }

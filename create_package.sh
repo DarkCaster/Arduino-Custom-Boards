@@ -117,10 +117,13 @@ dos2unix -q -r -n "$curdir/src/external/pins_arduino.h" "$temp_dir/$package_name
 #build optiboot for supported platforms
 log "building bootloaders"
 build_optiboot 20000000L 250000 "atmega328 atmega328p atmega328pb"
+build_optiboot 20000000L 115200 "atmega328 atmega328p atmega328pb"
+build_optiboot 20000000L 57600  "atmega328 atmega328p atmega328pb"
 build_optiboot 16000000L 250000 "atmega328 atmega328p atmega328pb atmega1284p atmega2560"
+build_optiboot 16000000L 115200 "atmega328 atmega328p atmega328pb atmega1284p atmega2560"
+build_optiboot 16000000L 57600  "atmega328 atmega328p atmega328pb atmega1284p atmega2560"
 build_optiboot 8000000L 19200 "atmega328 atmega328p atmega328pb atmega1284p"
 build_optiboot 1000000L 9600 "atmega328 atmega328p atmega328pb"
-build_optiboot 16000000L 115200 "atmega2560"
 
 #compress files
 log "creating archive $package_archive"

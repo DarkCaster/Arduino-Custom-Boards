@@ -48,6 +48,18 @@ if [[ ! -z $MSYSTEM ]]; then
   return 0
  }
 else
+  # find arduino installation, and setup avr-gcc
+  log "looking for avr-gcc from arduino installation"
+  for test_dir in "$HOME"/arduino-*/hardware/tools/avr/bin "$HOME/.arduino"*/packages/arduino/tools/avr-gcc/*/bin
+  do
+   [[ ! -d $test_dir ]] && continue
+   if [[ -e $test_dir/avr-gcc ]]; then
+    log "adding directory $test_dir to path env"
+    arduino_found="true"
+    export PATH="$test_dir:$PATH"
+   fi
+  done
+  [[ $arduino_found != true ]] && log "avr-gcc not found!" && false
  compress ()
  {
   log "TODO"

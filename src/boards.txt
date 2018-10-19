@@ -41,27 +41,47 @@ a328.menu.version.atmega328 = ATmega328
 a328.menu.version.atmega328.build.mcu = atmega328
 
 ### Clock Menu
-a328.menu.clock.8MHz=8MHz External
+a328.menu.clock.8MHz=8MHz External (19200 optiboot upload speed)
 a328.menu.clock.8MHz.build.f_cpu=8000000L
 a328.menu.clock.8MHz.bootloader.low_fuses=0xFF
 a328.menu.clock.8MHz.upload.speed=19200
 
-a328.menu.clock.16MHz=16MHz External
-a328.menu.clock.16MHz.build.f_cpu=16000000L
-a328.menu.clock.16MHz.bootloader.low_fuses=0xFF
-a328.menu.clock.16MHz.upload.speed=250000
+a328.menu.clock.16MHz_250K=16MHz External (250000 optiboot upload speed)
+a328.menu.clock.16MHz_250K.build.f_cpu=16000000L
+a328.menu.clock.16MHz_250K.bootloader.low_fuses=0xFF
+a328.menu.clock.16MHz_250K.upload.speed=250000
 
-a328.menu.clock.20MHz=20MHz External
-a328.menu.clock.20MHz.build.f_cpu=20000000L
-a328.menu.clock.20MHz.bootloader.low_fuses=0xFF
-a328.menu.clock.20MHz.upload.speed=250000
+a328.menu.clock.16MHz_115K=16MHz External (115200 optiboot upload speed)
+a328.menu.clock.16MHz_115K.build.f_cpu=16000000L
+a328.menu.clock.16MHz_115K.bootloader.low_fuses=0xFF
+a328.menu.clock.16MHz_115K.upload.speed=115200
 
-a328.menu.clock.I1MHz=1MHz Internal
+a328.menu.clock.16MHz_56K=16MHz External (57600 optiboot upload speed)
+a328.menu.clock.16MHz_56K.build.f_cpu=16000000L
+a328.menu.clock.16MHz_56K.bootloader.low_fuses=0xFF
+a328.menu.clock.16MHz_56K.upload.speed=57600
+
+a328.menu.clock.20MHz_250K=20MHz External (250000 optiboot upload speed)
+a328.menu.clock.20MHz_250K.build.f_cpu=20000000L
+a328.menu.clock.20MHz_250K.bootloader.low_fuses=0xFF
+a328.menu.clock.20MHz_250K.upload.speed=250000
+
+a328.menu.clock.20MHz_115K=20MHz External (115200 optiboot upload speed)
+a328.menu.clock.20MHz_115K.build.f_cpu=20000000L
+a328.menu.clock.20MHz_115K.bootloader.low_fuses=0xFF
+a328.menu.clock.20MHz_115K.upload.speed=115200
+
+a328.menu.clock.20MHz_56K=20MHz External (57600 optiboot upload speed)
+a328.menu.clock.20MHz_56K.build.f_cpu=20000000L
+a328.menu.clock.20MHz_56K.bootloader.low_fuses=0xFF
+a328.menu.clock.20MHz_56K.upload.speed=57600
+
+a328.menu.clock.I1MHz=1MHz Internal (9600 optiboot upload speed)
 a328.menu.clock.I1MHz.build.f_cpu=1000000L
 a328.menu.clock.I1MHz.bootloader.low_fuses=0x62
 a328.menu.clock.I1MHz.upload.speed=9600
 
-a328.menu.clock.I8MHz=8MHz Internal
+a328.menu.clock.I8MHz=8MHz Internal (19200 optiboot upload speed)
 a328.menu.clock.I8MHz.build.f_cpu=8000000L
 a328.menu.clock.I8MHz.bootloader.low_fuses=0xE2
 a328.menu.clock.I8MHz.upload.speed=19200
@@ -80,7 +100,7 @@ a328.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable further
 a328.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
 
 ### Bootloader Menu
-a328.menu.boot.none=No bootloader (sketch upload use AVR ISP)
+a328.menu.boot.none=No bootloader (sketch upload use AVR ISP, 115200 baud rate)
 a328.menu.boot.none.upload.maximum_size=32768
 a328.menu.boot.none.bootloader.high_fuses=0xDF
 a328.menu.boot.none.upload.tool=avrdude_fuseonly
@@ -177,20 +197,40 @@ a1284.menu.version.atmega1284p = Atmega1284P
 a1284.menu.version.atmega1284p.build.mcu = atmega1284p
 
 ### Clock Menu
-a1284.menu.clock.anet=16MHz FullSwing Oscillator (Anet 1.0 Board, CKSEL=0110, SUT=01)
-a1284.menu.clock.anet.build.f_cpu=16000000L
-a1284.menu.clock.anet.bootloader.low_fuses=0xD6
-a1284.menu.clock.anet.upload.speed=250000
+a1284.menu.clock.anet_250K=16MHz FullSwing Oscillator (Anet 1.0 Board, CKSEL=0110, SUT=01; 250000 optiboot upload speed)
+a1284.menu.clock.anet_250K.build.f_cpu=16000000L
+a1284.menu.clock.anet_250K.bootloader.low_fuses=0xD6
+a1284.menu.clock.anet_250K.upload.speed=250000
 
-a1284.menu.clock.8MHz=8MHz External
+a1284.menu.clock.anet_115K=16MHz FullSwing Oscillator (Anet 1.0 Board, CKSEL=0110, SUT=01; 115200 optiboot upload speed)
+a1284.menu.clock.anet_115K.build.f_cpu=16000000L
+a1284.menu.clock.anet_115K.bootloader.low_fuses=0xD6
+a1284.menu.clock.anet_115K.upload.speed=115200
+
+a1284.menu.clock.anet_56K=16MHz FullSwing Oscillator (Anet 1.0 Board, CKSEL=0110, SUT=01; 57600 optiboot upload speed)
+a1284.menu.clock.anet_56K.build.f_cpu=16000000L
+a1284.menu.clock.anet_56K.bootloader.low_fuses=0xD6
+a1284.menu.clock.anet_56K.upload.speed=57600
+
+a1284.menu.clock.8MHz=8MHz External (19200 optiboot upload speed)
 a1284.menu.clock.8MHz.build.f_cpu=8000000L
 a1284.menu.clock.8MHz.bootloader.low_fuses=0xFF
 a1284.menu.clock.8MHz.upload.speed=19200
 
-a1284.menu.clock.16MHz=16MHz External
-a1284.menu.clock.16MHz.build.f_cpu=16000000L
-a1284.menu.clock.16MHz.bootloader.low_fuses=0xFF
-a1284.menu.clock.16MHz.upload.speed=250000
+a1284.menu.clock.16MHz_250K=16MHz External (250000 optiboot upload speed)
+a1284.menu.clock.16MHz_250K.build.f_cpu=16000000L
+a1284.menu.clock.16MHz_250K.bootloader.low_fuses=0xFF
+a1284.menu.clock.16MHz_250K.upload.speed=250000
+
+a1284.menu.clock.16MHz_115K=16MHz External (115200 optiboot upload speed)
+a1284.menu.clock.16MHz_115K.build.f_cpu=16000000L
+a1284.menu.clock.16MHz_115K.bootloader.low_fuses=0xFF
+a1284.menu.clock.16MHz_115K.upload.speed=115200
+
+a1284.menu.clock.16MHz_56K=16MHz External (57600 optiboot upload speed)
+a1284.menu.clock.16MHz_56K.build.f_cpu=16000000L
+a1284.menu.clock.16MHz_56K.bootloader.low_fuses=0xFF
+a1284.menu.clock.16MHz_56K.upload.speed=57600
 
 ### Locking menu
 a1284.menu.locking.nolock=Unlocked
@@ -206,7 +246,7 @@ a1284.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable furthe
 a1284.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
 
 ### Bootloader Menu
-a1284.menu.boot.none=No bootloader (sketch upload use AVR ISP)
+a1284.menu.boot.none=No bootloader (sketch upload use AVR ISP, 115200 baud rate)
 a1284.menu.boot.none.upload.maximum_size=131072
 a1284.menu.boot.none.bootloader.high_fuses=0xDF
 a1284.menu.boot.none.upload.tool=avrdude_fuseonly
@@ -256,9 +296,20 @@ a2560.upload.tool=arduino:avrdude
 a2560.upload.maximum_data_size=8192
 
 ### Clock Menu
-a2560.menu.clock.16MHz=16MHz External (Arduino Mega 2560)
-a2560.menu.clock.16MHz.build.f_cpu=16000000L
-a2560.menu.clock.16MHz.bootloader.low_fuses=0xFF
+a2560.menu.clock.16MHz_250K=16MHz External (Arduino Mega 2560, 250000 optiboot upload speed)
+a2560.menu.clock.16MHz_250K.build.f_cpu=16000000L
+a2560.menu.clock.16MHz_250K.bootloader.low_fuses=0xFF
+a2560.menu.clock.16MHz_250K.upload.speed=250000
+
+a2560.menu.clock.16MHz_115K=16MHz External (Arduino Mega 2560, 115200 optiboot upload speed)
+a2560.menu.clock.16MHz_115K.build.f_cpu=16000000L
+a2560.menu.clock.16MHz_115K.bootloader.low_fuses=0xFF
+a2560.menu.clock.16MHz_115K.upload.speed=115200
+
+a2560.menu.clock.16MHz_56K=16MHz External (Arduino Mega 2560, 57600 optiboot upload speed)
+a2560.menu.clock.16MHz_56K.build.f_cpu=16000000L
+a2560.menu.clock.16MHz_56K.bootloader.low_fuses=0xFF
+a2560.menu.clock.16MHz_56K.upload.speed=57600
 
 ### Locking menu
 a2560.menu.locking.nolock=Unlocked
@@ -274,7 +325,7 @@ a2560.menu.locking.lpmspm_bap=Disable LPM/SPM in all sections and disable furthe
 a2560.menu.locking.lpmspm_bap.bootloader.lock_bits=0x02
 
 ### Bootloader Menu
-a2560.menu.boot.none=No bootloader (sketch upload use AVR ISP)
+a2560.menu.boot.none=No bootloader (sketch upload use AVR ISP, 115200 baud rate)
 a2560.menu.boot.none.upload.maximum_size=262144
 a2560.menu.boot.none.bootloader.high_fuses=0xDF
 a2560.menu.boot.none.upload.tool=avrdude_fuseonly
@@ -282,23 +333,13 @@ a2560.menu.boot.none.upload.protocol=stk500v1
 a2560.menu.boot.none.upload.extra_params=-P{serial.port} -b115200
 a2560.menu.boot.none.bootloader.tool=avrdude_fuseonly
 
-a2560.menu.boot.optiboot_slow=Optiboot (baud 115200)
-a2560.menu.boot.optiboot_slow.upload.maximum_size=261120
-a2560.menu.boot.optiboot_slow.bootloader.high_fuses=0xDE
-a2560.menu.boot.optiboot_slow.upload.tool=arduino:avrdude
-a2560.menu.boot.optiboot_slow.upload.protocol=arduino
-a2560.menu.boot.optiboot_slow.upload.speed=115200
-a2560.menu.boot.optiboot_slow.bootloader.tool=arduino:avrdude
-a2560.menu.boot.optiboot_slow.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
-
-a2560.menu.boot.optiboot_fast=Optiboot (baud 250000)
-a2560.menu.boot.optiboot_fast.upload.maximum_size=261120
-a2560.menu.boot.optiboot_fast.bootloader.high_fuses=0xDE
-a2560.menu.boot.optiboot_fast.upload.tool=arduino:avrdude
-a2560.menu.boot.optiboot_fast.upload.protocol=arduino
-a2560.menu.boot.optiboot_fast.upload.speed=250000
-a2560.menu.boot.optiboot_fast.bootloader.tool=arduino:avrdude
-a2560.menu.boot.optiboot_fast.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
+a2560.menu.boot.optiboot=Optiboot
+a2560.menu.boot.optiboot.upload.maximum_size=261120
+a2560.menu.boot.optiboot.bootloader.high_fuses=0xDE
+a2560.menu.boot.optiboot.upload.tool=arduino:avrdude
+a2560.menu.boot.optiboot.upload.protocol=arduino
+a2560.menu.boot.optiboot.bootloader.tool=arduino:avrdude
+a2560.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Brown-out detection
 a2560.menu.bod.b43v=BOD VCC=4.3v

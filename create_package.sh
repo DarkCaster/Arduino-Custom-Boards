@@ -33,6 +33,7 @@ if [[ ! -z $MSYSTEM ]]; then
   fi
  done
  [[ $arduino_found != true ]] && log "avr-gcc not found!" && false
+ shautil="sha256sum.exe"
  #use local make utility
  export PATH="$curdir\gnuwin32_make:$PATH"
  #use local bc utility
@@ -61,6 +62,8 @@ else
   done
   [[ $arduino_found != true ]] && log "avr-gcc not found!" && false
   [[ -z `2>/dev/null which zip` ]] && log "zip (Info-zip) utility not found!" && false
+  shautil=`2>/dev/null which sha256sum`
+  [[ -z $shautil ]] && log "sha256sum utility not found!" && false
   compress ()
   {
    local base="$1"
@@ -123,7 +126,7 @@ log "creating archive $package_archive"
 compress "$temp_dir" "$package_name" "$package_archive"
 
 #calculate sha256 checksum and size
-checksum=`sha256sum.exe -b "$temp_dir/$package_archive" | cut -f1 -d" "`
+checksum=`$shautil -b "$temp_dir/$package_archive" | cut -f1 -d" "`
 size=`du -b "$temp_dir/$package_archive" | cut -f1`
 
 #create package.json based on package.json.template

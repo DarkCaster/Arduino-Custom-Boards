@@ -109,7 +109,11 @@ static const uint8_t A7 = PIN_A7;
   #define digitalPinHasPWM(p)       ((p) == 3 || (p) == 4 || (p) == 12 || (p) == 13 || (p) == 14 || (p) == 15)
 #endif
 
-#define digitalPinToPCICR(p)        ( (((p) >= 0) && ((p) <= 31)) ? (&PCICR) : ((uint8_t *)0) )
+//fix for building Marlin with Arduino-IDE v1.8.10 and gcc 7.3.0
+
+#define digitalPinHasPCICR(p)       ( ((p) >= 0) && ((p) <= 31) )
+
+#define digitalPinToPCICR(p)        ( digitalPinHasPCICR(p) ? (&PCICR) : nullptr )
 
 #define digitalPinToPCICRbit(p)     ( (((p) >= 24) && ((p) <= 31)) ? 0 : \
                                     ( (((p) >=  0) && ((p) <=  7)) ? 1 : \
@@ -121,7 +125,7 @@ static const uint8_t A7 = PIN_A7;
                                     ( (((p) >=  0) && ((p) <=  7)) ? (&PCMSK1) : \
                                     ( (((p) >= 16) && ((p) <= 23)) ? (&PCMSK2) : \
                                     ( (((p) >=  8) && ((p) <= 15)) ? (&PCMSK3) : \
-                                    ((uint8_t *)0) ) ) ) )
+                                    nullptr ) ) ) )
 
 
 #define digitalPinToPCMSKbit(p)     ( (((p) >= 24) && ((p) <= 31)) ? (31 - (p)) : \

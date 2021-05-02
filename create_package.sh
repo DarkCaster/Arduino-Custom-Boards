@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export FORCE_BAUD=1
+
 curdir="$(cd "$(dirname "$0")" && pwd)"
 
 log() {

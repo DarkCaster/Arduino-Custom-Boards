@@ -117,6 +117,9 @@ a328.menu.boot.optiboot.bootloader.tool=arduino:avrdude
 a328.menu.boot.optiboot.bootloader.file=optiboot_{build.mcu}_{build.f_cpu}_{upload.speed}.hex
 
 ### Brown-out detection
+a328.menu.bod.b43v=BOD VCC=4.3v
+a328.menu.bod.b43v.bootloader.extended_fuses=0xFC
+
 a328.menu.bod.b27v=BOD VCC=2.7v
 a328.menu.bod.b27v.bootloader.extended_fuses=0xFD
 
